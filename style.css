@@ -1,0 +1,372 @@
+/* ========================================
+   1. FONT DAN VARIABEL WARNA DASAR (TEMA BIRU TUA & PUTIH)
+   ======================================== */
+:root {
+    --font-primary: 'Poppins', sans-serif;
+    --color-navy: #001f3f;          /* Biru Tua Gelap (Navy) */
+    --color-primary: #007bff;       /* Biru Cerah (Aksen/Tombol Aktif) */
+    --color-secondary: #ffffff;     /* Putih */
+    --color-background: #f8f9fa;    /* Latar Belakang Body (Putih Keabu-abuan) */
+    --color-dark-text: #343a40;     /* Hitam/Abu-abu gelap untuk teks di area putih */
+    --color-light-gray: #dee2e6;    /* Abu-abu terang untuk border/hover */
+    --color-accent: #ffc107;        /* Kuning Emas/Aksen */
+    --card-background: #ffffff;     /* Latar belakang kartu putih */
+}
+
+/* ========================================
+   2. RESET DASAR, TYPOGRAPHY, DAN LATAR BATIK
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--color-dark-text); 
+    line-height: 1.6;
+    
+    background-color: var(--color-background); 
+    position: relative; 
+}
+/* ========================================
+   2. KODE BODY DENGAN BATIK TRANSPARAN YANG BENAR
+   ======================================== */
+body {
+    /* Properti dasar body */
+    font-family: var(--font-primary);
+    color: var(--color-dark-text); 
+    line-height: 1.6;
+    background-color: var(--color-background); /* Warna latar belakang dasar */
+    position: relative; 
+}
+
+/* --- BATIK TRANSPARAN DENGAN PSEUDO-ELEMENT --- */
+/* Ini adalah cara yang benar untuk membuat motif batik transparan
+   TANPA membuat teks di dalam body ikut transparan. */
+body::before {
+    content: '';
+    position: fixed; /* Batik tetap di tempat */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Ganti 'batik.jpg' dengan nama file Anda, misal: 'BATIKKK.jpeg' */
+    background-image: url('BATIKKK.jpeg'); 
+    background-repeat: repeat;
+    background-size: 150px; /* Atur ukuran pola */
+    
+    opacity: 0.1; /* TINGKAT KESAMARAN (TRANSPARANSI) */
+    
+    z-index: -1; 
+}
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 20px;
+}
+
+h1, h2, h3 {
+    color: var(--color-dark-text);
+    margin-bottom: 0.5rem;
+}
+
+/* Header: Dominasi Biru Tua & Background Batik */
+header {
+    background-image: url('BACKGROUND.png'); /* PASTIKAN NAMA FILE BATIK HEADER BENAR */
+    background-color: var(--color-navy); 
+    background-repeat: no-repeat; 
+    
+    /* Ukuran disesuaikan agar tidak nge-zoom */
+    background-size: 100% auto; 
+    background-position: center; 
+    
+    color: var(--color-secondary);
+    
+    padding: 35px 0; /* Padding lega */
+    
+    text-align: center; /* Teks di tengah */
+    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    color: var(--color-secondary);
+    
+    font-size: 2.2rem; /* Ukuran font besar */
+    
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
+}
+
+header h1 i {
+    margin-right: 10px;
+}
+
+header p {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* ========================================
+   3. AREA FILTER DAN PENCARIAN
+   ======================================== */
+#search-filter-area {
+    display: flex;
+    flex-direction: column; 
+    gap: 1.5rem; 
+    margin: 3rem 0 2rem;
+}
+
+/* KONTEN UTAMA TOMBOL FILTER (Provinsi) */
+#filter-container {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 10px; 
+    justify-content: flex-start; 
+}
+
+.filter-button {
+    background-color: var(--card-background); 
+    color: var(--color-navy); 
+    border: 1px solid var(--color-navy);
+    padding: 8px 15px; 
+    border-radius: 20px; 
+    cursor: pointer;
+    font-size: 0.95rem; 
+    transition: all 0.2s ease;
+    white-space: nowrap; 
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); 
+}
+
+.filter-button:hover:not(.active) {
+    background-color: #e3f2fd; 
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filter-button.active {
+    background-color: var(--color-primary); 
+    color: var(--color-secondary); 
+    border-color: var(--color-primary);
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Pencarian */
+#searchInput {
+    padding: 14px 20px;
+    border: 1px solid var(--color-navy); 
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    font-size: 1.05rem;
+    width: 100%;
+    
+    background-color: var(--card-background);
+    color: var(--color-dark-text);
+}
+
+#searchInput::placeholder {
+    color: #6c757d; 
+    opacity: 0.8;
+}
+
+.count-info {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    color: var(--color-dark-text);
+}
+
+/* ========================================
+   4. LAYOUT KARTU KULINER (GRID)
+   ======================================== */
+#resep-list {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 30px; 
+    padding-bottom: 50px;
+}
+
+/* Media Query untuk Tablet */
+@media (min-width: 600px) {
+    #resep-list {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+/* Media Query untuk Desktop */
+@media (min-width: 992px) {
+    #resep-list {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+    
+    #searchInput {
+        width: 400px; 
+    }
+}
+
+
+/* ========================================
+   5. STYLING KARTU KULINER (FOOD CARD)
+   ======================================== */
+.food-card {
+    background-color: var(--card-background); 
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.food-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+.card-content h3 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-navy); 
+}
+
+.card-content .ikon {
+    color: var(--color-accent); 
+}
+
+.card-content p {
+    font-size: 0.95rem;
+    color: #6c757d; 
+    margin-top: 10px;
+    margin-bottom: 20px;
+    flex-grow: 1; 
+}
+
+.kategori {
+    display: block;
+    font-size: 0.85rem;
+    color: #adb5bd; 
+    margin-bottom: 5px;
+}
+
+/* Tombol Detail */
+.detail-button {
+    background-color: var(--color-navy); 
+    color: var(--color-secondary);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    width: 100%; 
+}
+
+.detail-button:hover {
+    background-color: #0056b3; 
+}
+
+/* ========================================
+   6. MODAL (Pop-up Detail)
+   ======================================== */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    background-color: var(--card-background); 
+    margin: 5% auto; 
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 90%; 
+    max-width: 700px;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+.close-button {
+    color: var(--color-dark-text);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    opacity: 0.7;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--color-navy);
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.modal-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#modal-body h2 {
+    color: var(--color-navy);
+    margin-bottom: 5px;
+}
+
+#modal-body h3 {
+    color: var(--color-dark-text);
+    margin-top: 15px;
+    font-size: 1.15rem;
+}
+
+#modal-body p {
+    color: #343a40;
+}
+
+#modal-body hr {
+    border: 0;
+    border-top: 1px solid var(--color-light-gray);
+    margin: 15px 0;
+}
+
+/* ========================================
+   7. FOOTER
+   ======================================== */
+footer {
+    background-color: var(--color-navy); 
+    color: var(--color-light-gray);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.85rem;
+}

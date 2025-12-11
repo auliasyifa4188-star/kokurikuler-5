@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch index.html with Debugger",
+            // Ganti ini dengan path file HTML utama Anda jika berbeda
+            "file": "${workspaceFolder}/index.html" 
+        }
+    ]
+}
